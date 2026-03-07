@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная — Магазин товаров</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+     <style>
+        html, body {
+            height: 100%;          /* Растягиваем html и body на всю высоту экрана */
+            margin: 0;             /* Убираем стандартные отступы браузера */
+            background-color: #f8f9fa;  /* Светло-серый фон страницы */
+            font-family: system-ui, -apple-system, sans-serif; /* Системный шрифт — выглядит нативно на любом устройстве */
+        }
+
+        .wrapper {
+            display: flex;         /* Flex-контейнер — сайдбар и контент стоят рядом */
+            min-height: 100vh;     /* Минимальная высота — весь экран, даже если контента мало */
+        }
+
+        .sidebar {
+            width: 280px;          /* Фиксированная ширина сайдбара */
+            background-color: #212529;  /* Тёмный фон сайдбара (Bootstrap dark) */
+            color: white;          /* Белый цвет текста по умолчанию */
+            display: flex;         /* Flex внутри сайдбара — элементы выстраиваются в колонку */
+            flex-direction: column; /* Направление — сверху вниз */
+            flex-shrink: 0;        /* Запрет сжатия сайдбара при нехватке места */
+        }
+
+        .logo {
+            padding: 24px 28px;    /* Внутренние отступы — воздух вокруг логотипа */
+            font-size: 1.5rem;     /* Крупный размер шрифта для названия */
+            font-weight: 700;      /* Жирный шрифт */
+            display: flex;         /* Flex — иконка и текст стоят рядом */
+            align-items: center;   /* Вертикальное выравнивание по центру */
+            gap: 12px;             /* Расстояние между логотипом и текстом */
+        }
+
+        .logo img {
+            max-height: 48px;      /* Ограничение высоты логотипа — не разъедется */
+            width: auto;           /* Ширина подстраивается автоматически (сохраняет пропорции) */
+        }
+
+        .nav-link {
+            color: #adb5bd;        /* Серый цвет неактивных пунктов меню */
+            padding: 14px 28px;    /* Отступы внутри каждого пункта — увеличивают область клика */
+            font-size: 1.1rem;     /* Чуть крупнее стандартного — лучше читается */
+            display: flex;         /* Flex — иконка и текст стоят в строку */
+            align-items: center;   /* Вертикальное выравнивание иконки и текста */
+            gap: 12px;             /* Расстояние между иконкой и текстом */
+            transition: all 0.2s ease; /* Плавная анимация при наведении (0.2с) */
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: #0d6efd; /* Синий фон при наведении и активном пункте */
+            color: white;          /* Белый текст на синем фоне */
+        }
+
+        .nav-link i {
+            font-size: 1.4rem;     /* Размер иконок Bootstrap Icons */
+            width: 24px;           /* Фиксированная ширина — все иконки выровнены по одной линии */
+            text-align: center;    /* Центрирование иконки внутри фиксированной ширины */
+        }
+
+        .main-content {
+            flex: 1;               /* Занимает всё оставшееся пространство справа от сайдбара */
+            padding: 40px 50px;    /* Внутренние отступы — воздух вокруг контента */
+            overflow-y: auto;      /* Вертикальная прокрутка если контент не помещается */
+        }
+
+        .card {
+            border: none;          /* Убираем стандартную рамку Bootstrap */
+            border-radius: 12px;   /* Скруглённые углы карточки */
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08); /* Мягкая тень — карточка "парит" над фоном */
+            transition: all 0.3s ease; /* Плавная анимация для эффекта при наведении */
+            height: 100%;          /* Все карточки в строке одинаковой высоты */
+        }
+
+        .card:hover {
+            transform: translateY(-12px); /* Карточка поднимается на 12px вверх при наведении */
+        }
+
+        .price {
+            font-size: 2.6rem;     /* Крупный шрифт цены — главный акцент карточки */
+            font-weight: 700;      /* Жирный шрифт */
+            color: #212529;        /* Тёмный цвет — контраст на белом фоне */
+            margin: 16px 0;        /* Вертикальные отступы сверху и снизу */
+        }
+
+        .btn-buy {
+            border: 2px solid #0d6efd; /* Синяя рамка кнопки */
+            color: #0d6efd;        /* Синий текст кнопки */
+            font-weight: 600;      /* Полужирный шрифт */
+            padding: 14px;         /* Увеличенные отступы — кнопка крупнее и удобнее */
+            border-radius: 8px;    /* Скруглённые углы кнопки */
+        }
+
+        .btn-buy:hover {
+            background-color: #0d6efd; /* Синий фон при наведении */
+            color: white;          /* Белый текст при наведении */
+        }
+
+        .sidebar-divider {
+            border: none;          /* Убираем стандартную рамку тега <hr> */
+            height: 2px;           /* Толщина разделителя */
+            background-color: #343a40; /* Тёмно-серый цвет — мягкий контраст на фоне сайдбара */
+            margin: 20px 24px;     /* Отступы: 20px сверху/снизу, 24px слева/справа (не на всю ширину) */
+            opacity: 0.65;         /* Полупрозрачность — линия выглядит деликатно */
+        }
+
+        .dropdown-menu {
+            background-color: #2c3238; /* Тёмный фон выпадающего меню */
+            border: none;          /* Убираем рамку */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Глубокая тень — меню визуально над всем */
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Сайдбар -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="logo.jpg" alt="Логотип магазина">
+            <span>Меню</span>
+
+        </div>
+
+        <hr class="sidebar-divider">
+
+        <nav class="nav flex-column">
+            <a href="home.html" class="nav-link">
+                <i class="bi bi-house-door"></i> Главная
+            </a>
+            <a href="category.html" class="nav-link">
+                <i class="bi bi-speedometer2"></i> Категории
+            </a>
+            <a href="catalog.html" class="nav-link active">
+                <i class="bi bi-table"></i> Заказы
+            </a>
+            <a href="contacts.html" class="nav-link">
+                <i class="bi bi-person-circle"></i> Контакты
+            </a>
+        </nav>
+
+        <!-- Блок пользователя с разделителем внутри -->
+        <div class="mt-auto bg-dark">
+            <hr class="sidebar-divider mb-0">
+            <div class="p-4">
+                <div class="dropdown dropup">
+                    <button class="btn w-100 text-start d-flex align-items-center gap-3 text-white border-0 p-0"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://i.pravatar.cc/48" alt="Аватар пользователя" class="rounded-circle" width="48">
+                        <span class="flex-grow-1 text-start">
+                            <span class="fw-semibold">Пользователь</span>
+                        </span>
+                        <span class="opacity-75">▼</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Профиль</a></li>
+                        <li><a class="dropdown-item" href="#">Выход</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
