@@ -73,8 +73,6 @@
         }
 
         .card {
-            border: none;          /* Убираем стандартную рамку Bootstrap */
-            border-radius: 12px;   /* Скруглённые углы карточки */
             box-shadow: 0 6px 25px rgba(0,0,0,0.08); /* Мягкая тень — карточка "парит" над фоном */
             transition: all 0.3s ease; /* Плавная анимация для эффекта при наведении */
             height: 100%;          /* Все карточки в строке одинаковой высоты */
@@ -125,7 +123,7 @@
     <!-- Сайдбар -->
     <div class="sidebar">
         <div class="logo">
-            <img src="logo.jpg" alt="Логотип магазина">
+            <img src="bootstrap-logo-white.svg" alt="Логотип магазина">
             <span>Меню</span>
 
         </div>
@@ -168,7 +166,106 @@
             </div>
         </div>
     </div>
+ <!-- Основной контент -->
+    <div class="main-content">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold mb-2">Каталог</h1>
+        </div>
+
+        <div class="row g-4">
+            <!-- Карточка 1 (повтори для 2–4) -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <!-- Thumbnail как у Claude: серый div с текстом (без img) -->
+                    <div class="bg-secondary d-flex align-items-center justify-content-center text-white fs-6 thumbnail-placeholder"
+                         style="height: 200px; font-size: 0.9rem;">  <!-- fs-6 + style для меньшего шрифта -->
+                        Thumbnail
+                    </div>
+                    <div class="card-body">
+                        <!-- Убрали <h5> — только текст, как ты просил -->
+                        <p class="card-text text-muted">
+                            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">View</a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 (копия) -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="bg-secondary d-flex align-items-center justify-content-center text-white fs-6 thumbnail-placeholder"
+                         style="height: 200px; font-size: 0.9rem;">
+                        Thumbnail
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted">
+                            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">View</a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 (копия) -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="bg-secondary d-flex align-items-center justify-content-center text-white fs-6 thumbnail-placeholder"
+                         style="height: 200px; font-size: 0.9rem;">
+                        Thumbnail
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted">
+                            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">View</a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 4 (копия) -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="bg-secondary d-flex align-items-center justify-content-center text-white fs-6 thumbnail-placeholder"
+                         style="height: 200px; font-size: 0.9rem;">
+                        Thumbnail
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-muted">
+                            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2">View</a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Edit</a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
